@@ -1,17 +1,12 @@
 import S from '@sanity/desk-tool/structure-builder'
 import MdSettings from 'react-icons/lib/md/settings'
-import {
-  MdPerson,
-  MdDescription,
-  MdLocalOffer
-} from 'react-icons/lib/md'
+import { MdDescription, MdComment } from 'react-icons/lib/md'
 import IframePreview from '../previews/IframePreview'
 
 // Web preview configuration
 const remoteURL = 'https://mattmoriarity-com.netlify.com'
 const localURL = 'http://localhost:8000'
-const previewURL =
-  window.location.hostname === 'localhost' ? localURL : remoteURL
+const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
 export const getDefaultDocumentNode = props => {
   /**
@@ -22,7 +17,7 @@ export const getDefaultDocumentNode = props => {
    * https://www.sanity.io/docs/structure-builder-reference#getdefaultdocumentnode-97e44ce262c9
    */
   const { schemaType } = props
-  if (schemaType == 'post') {
+  if (schemaType == 'post' || schemaType === 'micropost') {
     return S.document().views([
       S.view.form(),
       S.view
@@ -63,22 +58,14 @@ export default () =>
         .schemaType('post')
         .child(S.documentTypeList('post').title('Blog posts')),
       S.listItem()
-        .title('Authors')
-        .icon(MdPerson)
-        .schemaType('author')
-        .child(S.documentTypeList('author').title('Authors')),
-      S.listItem()
-        .title('Categories')
-        .icon(MdLocalOffer)
-        .schemaType('category')
-        .child(S.documentTypeList('category').title('Categories')),
+        .title('Microblog posts')
+        .icon(MdComment)
+        .schemaType('micropost')
+        .child(S.documentTypeList('micropost').title('Microblog posts')),
       // `S.documentTypeListItems()` returns an array of all the document types
       // defined in schema.js. We filter out those that we have
       // defined the structure above.
       ...S.documentTypeListItems().filter(
-        listItem =>
-          !['category', 'author', 'post', 'siteSettings'].includes(
-            listItem.getId()
-          )
+        listItem => !['post', 'micropost', 'siteSettings'].includes(listItem.getId())
       )
     ])

@@ -1,4 +1,4 @@
-import {format} from 'date-fns'
+import { format } from 'date-fns'
 
 export default {
   name: 'post',
@@ -40,32 +40,16 @@ export default {
         'This ends up on summary pages, on Google, when people share your post in social media.'
     },
     {
-      name: 'authors',
-      title: 'Authors',
-      type: 'array',
-      of: [
-        {
-          type: 'authorReference'
-        }
-      ]
-    },
-    {
-      name: 'categories',
-      type: 'array',
-      title: 'Categories',
-      of: [
-        {
-          type: 'reference',
-          to: {
-            type: 'category'
-          }
-        }
-      ]
-    },
-    {
       name: 'body',
       type: 'bodyPortableText',
       title: 'Body'
+    },
+    {
+      name: 'syndication',
+      type: 'syndication',
+      title: 'Syndication links',
+      description:
+        'These are URLs that this post has been syndicated to on other sites or platforms'
     }
   ],
   orderings: [
@@ -105,7 +89,7 @@ export default {
       slug: 'slug',
       media: 'mainImage'
     },
-    prepare ({title = 'No title', publishedAt, slug = {}, media}) {
+    prepare({ title = 'No title', publishedAt, slug = {}, media }) {
       const dateSegment = format(publishedAt, 'YYYY/MM')
       const path = `/${dateSegment}/${slug.current}/`
       return {
