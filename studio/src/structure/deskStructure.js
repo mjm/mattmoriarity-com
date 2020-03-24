@@ -1,6 +1,6 @@
 import S from '@sanity/desk-tool/structure-builder'
 import MdSettings from 'react-icons/lib/md/settings'
-import { MdDescription, MdComment } from 'react-icons/lib/md'
+import { MdDescription, MdComment, MdBuild, MdLibraryMusic } from 'react-icons/lib/md'
 import IframePreview from '../previews/IframePreview'
 
 // Web preview configuration
@@ -62,10 +62,22 @@ export default () =>
         .icon(MdComment)
         .schemaType('micropost')
         .child(S.documentTypeList('micropost').title('Microblog posts')),
+      S.divider(),
+      S.listItem()
+        .title('Projects')
+        .icon(MdBuild)
+        .schemaType('project')
+        .child(S.documentTypeList('project').title('Projects')),
+      S.listItem()
+        .title('Music albums')
+        .icon(MdLibraryMusic)
+        .schemaType('musicAlbum')
+        .child(S.documentTypeList('musicAlbum').title('Music albums')),
       // `S.documentTypeListItems()` returns an array of all the document types
       // defined in schema.js. We filter out those that we have
       // defined the structure above.
       ...S.documentTypeListItems().filter(
-        listItem => !['post', 'micropost', 'siteSettings'].includes(listItem.getId())
+        listItem =>
+          !['post', 'micropost', 'project', 'musicAlbum', 'siteSettings'].includes(listItem.getId())
       )
     ])

@@ -7,6 +7,8 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // document schemas
 import post from './documents/post'
 import microPost from './documents/microPost'
+import project from './documents/project'
+import musicAlbum from './documents/musicAlbum'
 import siteSettings from './documents/siteSettings'
 
 // Object types
@@ -28,6 +30,8 @@ export default createSchema({
     siteSettings,
     post,
     microPost,
+    project,
+    musicAlbum,
     mainImage,
     bodyPortableText,
     bioPortableText,
