@@ -9,7 +9,6 @@ const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   plugins: [
-    'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-sanity',
@@ -18,6 +17,19 @@ module.exports = {
         token: process.env.SANITY_READ_TOKEN,
         watchMode: !isProd,
         overlayDrafts: !isProd
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        implementation: require('sass')
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'src/lib/typography',
+        omitGoogleFont: true
       }
     }
   ]

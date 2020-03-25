@@ -12,10 +12,6 @@ export const query = graphql`
     post: sanityPost(id: { eq: $id }) {
       id
       publishedAt
-      categories {
-        _id
-        title
-      }
       mainImage {
         ...SanityImage
         alt
@@ -26,33 +22,6 @@ export const query = graphql`
       }
       _rawExcerpt(resolveReferences: { maxDepth: 5 })
       _rawBody(resolveReferences: { maxDepth: 5 })
-      authors {
-        _key
-        author {
-          image {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-          }
-          name
-        }
-      }
     }
   }
 `

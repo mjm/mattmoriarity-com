@@ -16,6 +16,29 @@ export default {
       description: 'Describe your blog for search engines and social media.'
     },
     {
+      name: 'siteUrl',
+      type: 'url',
+      title: 'Site URL',
+      description: 'Used to generate URLs for posts in feeds.'
+    },
+    {
+      name: 'selfLinks',
+      type: 'array',
+      of: [
+        {
+          type: 'url',
+          title: 'URL'
+        }
+      ],
+      title: 'Self links',
+      description: 'Add links to your other profiles on the web.'
+    },
+    {
+      name: 'webmentionUsername',
+      type: 'string',
+      title: 'Webmention username'
+    },
+    {
       name: 'keywords',
       type: 'array',
       title: 'Keywords',

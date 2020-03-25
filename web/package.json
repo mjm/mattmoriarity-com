@@ -41,6 +41,14 @@
     "react-helmet": "^5.2.1"
   },
   "dependencies": {
-    "gatsby-image": "^2.0.41"
+    "gatsby-image": "^2.0.41",
+    "gatsby-plugin-sass": "^2.2.1",
+    "gatsby-plugin-typography": "^2.4.1",
+    "prismjs": "^1.19.0",
+    "react-typography": "^0.16.19",
+    "sass": "^1.26.3",
+    "typeface-eczar": "0.0.72",
+    "typeface-gentium-basic": "0.0.72",
+    "typography": "^0.16.19"
   }
 }
