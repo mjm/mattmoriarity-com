@@ -9,6 +9,15 @@ export default {
       title: 'Name'
     },
     {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: {
+        source: 'name',
+        maxLength: 96
+      }
+    },
+    {
       name: 'repository',
       type: 'string',
       title: 'GitHub repository slug'
