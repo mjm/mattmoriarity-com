@@ -1,0 +1,148 @@
+@import './variables.scss';
+
+:root {
+  --title-color: #{$purple-800};
+  --mention-count-color: #{$purple-600};
+  --article-count-color: #{$purple-400};
+  --pinned-border-color: #{$purple-300};
+
+  @media (prefers-color-scheme: dark) {
+    --title-color: #{$purple-300};
+    --mention-count-color: #{$purple-400};
+    --article-count-color: #{$purple-600};
+    --pinned-border-color: #{$purple-700};
+  }
+}
+
+.title {
+  color: var(--title-color);
+  text-decoration: none;
+}
+
+.readMore {
+  color: var(--mention-count-color);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
+  margin-top: spacing(4);
+}
+
+.mentionCount {
+  color: var(--mention-count-color);
+  margin-right: spacing(3);
+  font-size: 0.9rem;
+
+  svg {
+    margin-right: spacing(1);
+    font-size: 0.75rem;
+  }
+}
+
+.separator {
+  height: spacing(1);
+  background-color: var(--separator-color);
+  margin: spacing(10) auto spacing(12) auto;
+  width: 33.3333%;
+  border-radius: 9999px;
+}
+
+.seeMore {
+  text-align: center;
+  margin-top: spacing(8);
+
+  a {
+    color: var(--link-color);
+  }
+}
+
+.pinnedPosts hr {
+  margin-top: spacing(15);
+}
+
+.pinned {
+  background-color: var(--secondary-background);
+  padding: spacing(5) spacing(4) spacing(4) spacing(4);
+  border-top: 4px solid var(--pinned-border-color);
+  margin-bottom: spacing(6);
+  @include shadow-md;
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .dateBubble {
+    background-color: var(--page-background);
+  }
+}
+
+.pinnedLabel {
+  flex-grow: 1;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+
+  color: var(--article-count-color);
+  font-style: italic;
+  font-size: 0.85rem;
+
+  svg {
+    margin-right: spacing(2);
+  }
+}
+
+.archiveYear {
+  margin-bottom: 0.6rem;
+}
+
+.archiveTitle {
+  padding-bottom: spacing(1);
+  margin-bottom: spacing(10);
+  border-bottom: 4px solid var(--separator-color);
+}
+
+.archives {
+  list-style: none;
+  margin-left: 0;
+
+  a {
+    color: var(--link-color);
+  }
+
+  .articleCount {
+    font-size: 0.9rem;
+    color: var(--article-count-color);
+  }
+}
+
+.tableOfContents {
+  a {
+    color: var(--link-color);
+  }
+}
+
+:global(.anchor) {
+  margin-left: -24px;
+
+  svg {
+    color: var(--link-color);
+    fill: currentColor;
+  }
+}
+
+:global(.e-content) blockquote,
+.series {
+  background-color: var(--secondary-background);
+  margin: 0 0 0.9rem 0;
+  padding: spacing(3) spacing(5);
+  border-left: 4px solid var(--pinned-border-color);
+
+  a {
+    color: var(--link-color);
+  }
+}

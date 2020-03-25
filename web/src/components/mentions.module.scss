@@ -1,0 +1,88 @@
+@import './variables.scss';
+
+:root {
+  --mention-author-color: #{$purple-800};
+
+  @media (prefers-color-scheme: dark) {
+    --mention-author-color: #{$purple-200};
+  }
+}
+
+.separator {
+  height: spacing(1);
+  background-color: var(--separator-color);
+  margin: spacing(6) auto spacing(5) auto;
+  width: 33.3333%;
+  border-radius: 9999px;
+}
+
+.likes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: spacing(4);
+}
+
+.mention {
+  display: flex;
+  flex-direction: row;
+  margin-top: spacing(4);
+  background-color: var(--secondary-background);
+  padding: spacing(3) spacing(3);
+  border-radius: 0.5rem;
+  @include shadow;
+}
+
+.avatar {
+  margin-right: spacing(3);
+  flex: none;
+
+  img {
+    width: spacing(12);
+    height: spacing(12);
+    margin-bottom: 0;
+    border-radius: 9999px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-size: 0.8rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+}
+
+.author {
+  flex-grow: 1;
+  margin-bottom: spacing(1);
+
+  a {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--mention-author-color);
+  }
+}
+
+.timestamp {
+  flex-grow: 0;
+
+  a {
+    text-decoration: none;
+    color: var(--link-color);
+  }
+}
+
+.body {
+  a {
+    color: var(--link-color);
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}

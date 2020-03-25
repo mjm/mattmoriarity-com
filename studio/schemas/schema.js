@@ -17,6 +17,7 @@ import bioPortableText from './objects/bioPortableText'
 import excerptPortableText from './objects/excerptPortableText'
 import mainImage from './objects/mainImage'
 import syndication from './objects/syndication'
+import tweet from './objects/tweet'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -36,7 +37,8 @@ export default createSchema({
     bodyPortableText,
     bioPortableText,
     excerptPortableText,
-    syndication
+    syndication,
+    tweet
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
