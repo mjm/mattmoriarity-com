@@ -1,12 +1,18 @@
 import S from '@sanity/desk-tool/structure-builder'
 import MdSettings from 'react-icons/lib/md/settings'
-import { MdDescription, MdComment, MdBuild, MdLibraryMusic } from 'react-icons/lib/md'
+import {
+  MdDescription,
+  MdComment,
+  MdBuild,
+  MdLibraryMusic
+} from 'react-icons/lib/md'
 import IframePreview from '../previews/IframePreview'
 
 // Web preview configuration
 const remoteURL = 'https://mattmoriarity-com.netlify.com'
 const localURL = 'http://localhost:8000'
-const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
+const previewURL =
+  window.location.hostname === 'localhost' ? localURL : remoteURL
 
 export const getDefaultDocumentNode = props => {
   /**
@@ -17,7 +23,7 @@ export const getDefaultDocumentNode = props => {
    * https://www.sanity.io/docs/structure-builder-reference#getdefaultdocumentnode-97e44ce262c9
    */
   const { schemaType } = props
-  if (schemaType == 'post' || schemaType === 'micropost') {
+  if (schemaType === 'post' || schemaType === 'micropost') {
     return S.document().views([
       S.view.form(),
       S.view
@@ -78,6 +84,12 @@ export default () =>
       // defined the structure above.
       ...S.documentTypeListItems().filter(
         listItem =>
-          !['post', 'micropost', 'project', 'musicAlbum', 'siteSettings'].includes(listItem.getId())
+          ![
+            'post',
+            'micropost',
+            'project',
+            'musicAlbum',
+            'siteSettings'
+          ].includes(listItem.getId())
       )
     ])

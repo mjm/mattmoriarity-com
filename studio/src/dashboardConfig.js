@@ -33,14 +33,22 @@ export default {
             value: 'https://github.com/mjm/mattmoriarity-com',
             category: 'Code'
           },
-          { title: 'Frontend', value: 'https://mattmoriarity-com.netlify.com', category: 'apps' }
+          {
+            title: 'Frontend',
+            value: 'https://mattmoriarity-com.netlify.com',
+            category: 'apps'
+          }
         ]
       }
     },
     { name: 'project-users', layout: { height: 'auto' } },
     {
       name: 'document-list',
-      options: { title: 'Recent blog posts', order: '_createdAt desc', types: ['post'] },
+      options: {
+        title: 'Recent blog posts',
+        order: '_createdAt desc',
+        types: ['post']
+      },
       layout: { width: 'medium' }
     }
   ]
