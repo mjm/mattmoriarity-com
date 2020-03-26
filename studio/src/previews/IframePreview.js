@@ -1,7 +1,6 @@
 /* eslint-disable react/no-multi-comp, react/no-did-mount-set-state */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { format } from 'date-fns'
 import styles from './IframePreview.module.css'
 
 /**
@@ -10,15 +9,13 @@ import styles from './IframePreview.module.css'
  */
 
 const assemblePostUrl = ({ displayed, options }) => {
-  const { slug, publishedAt } = displayed
+  const { slug } = displayed
   const { previewURL } = options
   if (!slug || !previewURL) {
     console.warn('Missing slug or previewURL', { slug, previewURL })
     return ''
   }
-  const dateSegment = format(publishedAt, 'YYYY/MM')
-  const path = `/${dateSegment}/${slug.current}/`
-  return `${previewURL}/blog${path}`
+  return `${previewURL}/${slug.current}/`
 }
 
 const IframePreview = props => {
