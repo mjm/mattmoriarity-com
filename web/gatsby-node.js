@@ -115,8 +115,41 @@ async function createStaticPages(graphql, { createPage }) {
   })
 }
 
+async function createProjectPages(graphql, { createPage }) {
+  const result = await graphql(`
+    {
+      allSanityProject(filter: { slug: { current: { ne: null } } }) {
+        edges {
+          node {
+            id
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) throw result.errors
+
+  const projectEdges = (result.data.allSanityProject || {}).edges || []
+
+  projectEdges.forEach(edge => {
+    const { id, slug = {} } = edge.node
+    const path = `/projects/${slug.current}/`
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/project.js'),
+      context: { id }
+    })
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   await createBlogPostPages(graphql, actions)
   await createMicropostPages(graphql, actions)
   await createStaticPages(graphql, actions)
+  await createProjectPages(graphql, actions)
 }
