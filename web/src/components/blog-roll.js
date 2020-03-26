@@ -21,7 +21,7 @@ const BlogRoll = ({ posts }) => {
 }
 
 export const BlogRollEntry = ({ siteUrl, post, pinned }) => {
-  const url = `/${post.slug.current}`
+  const url = `/${post.slug.current}/`
   const fullUrl = siteUrl + url
 
   return (
@@ -34,9 +34,11 @@ export const BlogRollEntry = ({ siteUrl, post, pinned }) => {
             </Link>
           </h2>
         )}
-        <PortableText
-          blocks={post._type === 'post' ? post._rawExcerpt : post._rawBody}
-        />
+        <div className="e-content">
+          <PortableText
+            blocks={post._type === 'post' ? post._rawExcerpt : post._rawBody}
+          />
+        </div>
         {post._type === 'post' ? (
           <p>
             <Link to={url} className={styles.readMore}>

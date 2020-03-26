@@ -5,7 +5,6 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from '../lib/helpers'
-import BlogPostPreviewList from '../components/blog-post-preview-list'
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
@@ -50,7 +49,7 @@ export const query = graphql`
           }
           prettyPublishedAt: publishedAt(formatString: "MMM D, Y")
           publishedAt(formatString: "YYYY-MM-DDTHH:mm:ssZ")
-          _rawBody
+          _rawBody(resolveReferences: { maxDepth: 5 })
         }
       }
     }
