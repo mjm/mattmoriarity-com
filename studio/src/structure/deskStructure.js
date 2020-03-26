@@ -4,7 +4,8 @@ import {
   MdDescription,
   MdComment,
   MdBuild,
-  MdLibraryMusic
+  MdLibraryMusic,
+  MdInsertDriveFile
 } from 'react-icons/lib/md'
 import IframePreview from '../previews/IframePreview'
 
@@ -68,6 +69,11 @@ export default () =>
         .icon(MdComment)
         .schemaType('micropost')
         .child(S.documentTypeList('micropost').title('Microblog posts')),
+      S.listItem()
+        .title('Pages')
+        .icon(MdInsertDriveFile)
+        .schemaType('page')
+        .child(S.documentTypeList('page').title('Pages')),
       S.divider(),
       S.listItem()
         .title('Projects')
@@ -85,6 +91,7 @@ export default () =>
       ...S.documentTypeListItems().filter(
         listItem =>
           ![
+            'page',
             'post',
             'micropost',
             'project',

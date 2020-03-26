@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import BlogPost from '../components/blog-post'
 import SEO from '../components/seo'
@@ -40,11 +39,7 @@ const BlogPostTemplate = props => {
         />
       )}
 
-      {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
+      {errors && <GraphQLErrorList errors={errors} />}
 
       {post && <BlogPost {...post} />}
     </Layout>

@@ -83,7 +83,40 @@ async function createMicropostPages(graphql, { createPage }) {
     })
 }
 
+async function createStaticPages(graphql, { createPage }) {
+  const result = await graphql(`
+    {
+      allSanityPage(filter: { slug: { current: { ne: null } } }) {
+        edges {
+          node {
+            id
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) throw result.errors
+
+  const pageEdges = (result.data.allSanityPage || {}).edges || []
+
+  pageEdges.forEach(edge => {
+    const { id, slug = {} } = edge.node
+    const path = `/${slug.current}/`
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/static-page.js'),
+      context: { id }
+    })
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   await createBlogPostPages(graphql, actions)
   await createMicropostPages(graphql, actions)
+  await createStaticPages(graphql, actions)
 }

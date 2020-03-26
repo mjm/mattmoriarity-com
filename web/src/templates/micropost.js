@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
@@ -20,7 +19,7 @@ export const query = graphql`
   }
 `
 
-const BlogPostTemplate = props => {
+const MicropostTemplate = props => {
   const { data, errors } = props
   const post = data && data.post
   return (
@@ -28,15 +27,11 @@ const BlogPostTemplate = props => {
       {errors && <SEO title="GraphQL Error" />}
       {post && <SEO title="Microblog post" />}
 
-      {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
+      {errors && <GraphQLErrorList errors={errors} />}
 
       {post && <MicroblogPost {...post} />}
     </Layout>
   )
 }
 
-export default BlogPostTemplate
+export default MicropostTemplate

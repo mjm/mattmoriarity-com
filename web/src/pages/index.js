@@ -5,7 +5,6 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from '../lib/helpers'
-import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
@@ -97,7 +96,7 @@ const IndexPage = ({ data, errors }) => {
   return (
     <Layout>
       <SEO title={site.title} description={site.description} />
-      <Container>{postNodes && <BlogRoll posts={postNodes} />}</Container>
+      {postNodes && <BlogRoll posts={postNodes} />}
     </Layout>
   )
 }

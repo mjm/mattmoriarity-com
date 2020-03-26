@@ -5,6 +5,7 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // document schemas
+import page from './documents/page'
 import post from './documents/post'
 import microPost from './documents/microPost'
 import project from './documents/project'
@@ -29,6 +30,7 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     siteSettings,
+    page,
     post,
     microPost,
     project,
