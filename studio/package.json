@@ -26,6 +26,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-twitter-embed": "^3.0.3",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.10",
     "sanity-plugin-dashboard-widget-netlify": "^1.0.1"
   },
