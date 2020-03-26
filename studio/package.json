@@ -15,6 +15,7 @@
   "dependencies": {
     "@sanity/base": "^1.149.5",
     "@sanity/cli": "^1.149",
+    "@sanity/code-input": "^1.149.0",
     "@sanity/components": "^1.149.5",
     "@sanity/core": "^1.149",
     "@sanity/dashboard": "^1.149.5",
@@ -23,10 +24,12 @@
     "@sanity/desk-tool": "^1.149.5",
     "@sanity/studio-hints": "^1.149.5",
     "date-fns": "^1.30.1",
+    "get-youtube-id": "^1.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-twitter-embed": "^3.0.3",
+    "react-youtube": "^7.9.0",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.10",
     "sanity-plugin-dashboard-widget-netlify": "^1.0.1"
   },

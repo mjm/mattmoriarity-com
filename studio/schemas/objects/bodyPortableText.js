@@ -55,7 +55,16 @@ export default {
       options: { hotspot: true }
     },
     {
+      type: 'code',
+      options: {
+        theme: 'github'
+      }
+    },
+    {
       type: 'tweet'
+    },
+    {
+      type: 'youtube'
     }
   ]
 }
