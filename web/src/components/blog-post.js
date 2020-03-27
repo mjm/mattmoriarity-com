@@ -1,55 +1,64 @@
-import { format, distanceInWords, differenceInDays } from 'date-fns'
 import React from 'react'
-import { buildImageObj } from '../lib/helpers'
-import { imageUrlFor } from '../lib/image-url'
+import Img from 'gatsby-image'
 import PortableText from './portableText'
-import AuthorList from './author-list'
+import DateBubble from './date-bubble'
+import { Syndication } from './syndication'
+import styles from './blog.module.scss'
+import Mentions from './mentions'
+import useSiteMetadata from './site-metadata'
 
-import styles from './blog-post.module.css'
+function BlogPost({
+  _rawBody,
+  title,
+  slug,
+  mainImage,
+  publishedAt,
+  prettyPublishedAt,
+  syndication
+}) {
+  const { siteUrl } = useSiteMetadata()
+  const url = slug.current && `${siteUrl}/${slug.current}/`
 
-function BlogPost(props) {
-  const { _rawBody, authors, categories, title, mainImage, publishedAt } = props
   return (
-    <article className={styles.root}>
-      {mainImage && mainImage.asset && (
-        <div className={styles.mainImage}>
-          <img
-            src={imageUrlFor(buildImageObj(mainImage))
-              .width(1200)
-              .height(Math.floor((9 / 16) * 1200))
-              .fit('crop')
-              .auto('format')
-              .url()}
-            alt={mainImage.alt}
-          />
-        </div>
+    <article className="h-entry">
+      {mainImage && mainImage.asset && mainImage.asset.fluid && (
+        <Img fluid={mainImage.asset.fluid} />
       )}
-      <div className={styles.grid}>
-        <div className={styles.mainContent}>
-          <h1 className={styles.title}>{title}</h1>
-          {_rawBody && <PortableText blocks={_rawBody} />}
-        </div>
-        <aside className={styles.metaContent}>
-          {publishedAt && (
-            <div className={styles.publishedAt}>
-              {differenceInDays(new Date(publishedAt), new Date()) > 3
-                ? distanceInWords(new Date(publishedAt), new Date())
-                : format(new Date(publishedAt), 'MMMM Do, YYYY')}
-            </div>
-          )}
-          {authors && <AuthorList items={authors} title="Authors" />}
-          {categories && (
-            <div className={styles.categories}>
-              <h3 className={styles.categoriesHeadline}>Categories</h3>
-              <ul>
-                {categories.map(category => (
-                  <li key={category._id}>{category.title}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </aside>
+      <h1 className="p-name">{title}</h1>
+      {/* {series.parts.length ? (
+          <blockquote className={styles.series}>
+            <p>This article is part of a series on {series.about}:</p>
+            <ul>
+              {series.parts.map((part, index) => (
+                <li key={part.fields.slug}>
+                  {part.fields.slug === slug ? (
+                    <>
+                      Part {index + 1}: {part.frontmatter.title}
+                    </>
+                  ) : (
+                    <Link to={part.fields.slug}>
+                      Part {index + 1}: {part.frontmatter.title}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </blockquote>
+        ) : null}
+        <div
+          className={styles.tableOfContents}
+          dangerouslySetInnerHTML={{ __html: tableOfContents }}
+        /> */}
+      <div className="e-content">
+        <PortableText blocks={_rawBody} />
       </div>
+      <div className={styles.footer}>
+        <DateBubble isoDate={publishedAt} className="dt-published">
+          {prettyPublishedAt}
+        </DateBubble>
+      </div>
+      <Syndication urls={syndication} />
+      <Mentions url={url} />
     </article>
   )
 }

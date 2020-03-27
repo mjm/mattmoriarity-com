@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import orderBy from 'lodash/orderBy'
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
@@ -42,6 +43,7 @@ export const query = graphql`
     ) {
       edges {
         node {
+          _type
           id
           slug {
             current
@@ -53,23 +55,21 @@ export const query = graphql`
       }
     }
     posts: allSanityPost(
-      limit: 6
+      limit: 30
       sort: { fields: [publishedAt], order: DESC }
       filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
     ) {
       edges {
         node {
+          _type
           id
-          publishedAt
-          mainImage {
-            ...SanityImage
-            alt
-          }
           title
           _rawExcerpt
           slug {
             current
           }
+          prettyPublishedAt: publishedAt(formatString: "MMM D, Y")
+          publishedAt(formatString: "YYYY-MM-DDTHH:mm:ssZ")
         }
       }
     }
@@ -87,11 +87,17 @@ const IndexPage = ({ data, errors }) => {
     )
   }
 
-  const postNodes = (data || {}).microposts
-    ? mapEdgesToNodes(data.microposts)
-        .filter(filterOutDocsWithoutSlugs)
-        .filter(filterOutDocsPublishedInTheFuture)
-    : []
+  const postNodes =
+    data.microposts && data.posts
+      ? orderBy(
+          mapEdgesToNodes(data.microposts)
+            .concat(mapEdgesToNodes(data.posts))
+            .filter(filterOutDocsWithoutSlugs)
+            .filter(filterOutDocsPublishedInTheFuture),
+          'publishedAt',
+          'desc'
+        ).slice(0, 30)
+      : []
 
   return (
     <Layout>

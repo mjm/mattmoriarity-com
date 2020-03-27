@@ -1,4 +1,4 @@
-const { isFuture, format } = require('date-fns')
+const { isFuture } = require('date-fns')
 
 async function createSanityPages(graphql, { createPage }) {
   const result = await graphql(`
@@ -62,9 +62,8 @@ async function createSanityPages(graphql, { createPage }) {
   postEdges
     .filter(edge => !isFuture(edge.node.publishedAt))
     .forEach(edge => {
-      const { id, slug = {}, publishedAt } = edge.node
-      const dateSegment = format(publishedAt, 'YYYY/MM')
-      const path = `/blog/${dateSegment}/${slug.current}/`
+      const { id, slug = {} } = edge.node
+      const path = `/${slug.current}/`
 
       createPage({
         path,

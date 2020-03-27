@@ -10,9 +10,15 @@ export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
     post: sanityPost(id: { eq: $id }) {
       id
-      publishedAt
+      prettyPublishedAt: publishedAt(formatString: "MMM D, Y")
+      publishedAt(formatString: "YYYY-MM-DDTHH:mm:ssZ")
       mainImage {
-        ...SanityImage
+        asset {
+          _id
+          fluid(maxWidth: 675) {
+            ...GatsbySanityImageFluid
+          }
+        }
         alt
       }
       title
