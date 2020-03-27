@@ -1,3 +1,6 @@
+import format from 'date-fns/format'
+import * as rs from 'randomstring'
+
 export default {
   name: 'micropost',
   type: 'document',
@@ -13,8 +16,9 @@ export default {
       type: 'slug',
       title: 'Slug',
       options: {
-        source: doc => toPlainText(doc.body),
-        maxLength: 96
+        source: doc =>
+          `${format(doc.publishedAt, 'YYYY-MM-DD')}-${sluggable(doc.body)}`,
+        maxLength: 51
       }
     },
     {
@@ -68,6 +72,11 @@ export default {
   }
 }
 
+function sluggable(blocks) {
+  const text = toPlainText(blocks)
+  return text || rs.generate(10)
+}
+
 function toPlainText(blocks) {
   const block = (blocks || []).find(block => block._type === 'block')
   return block
@@ -75,5 +84,5 @@ function toPlainText(blocks) {
         .filter(child => child._type === 'span')
         .map(span => span.text)
         .join('')
-    : null
+    : ''
 }

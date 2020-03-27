@@ -18,7 +18,7 @@ export default {
       description:
         'Some frontends will require a slug to be set to be able to show the post',
       options: {
-        source: 'title',
+        source: doc => `${format(doc.publishedAt, 'YYYY-MM-DD')}-${doc.title}`,
         maxLength: 96
       }
     },
