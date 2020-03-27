@@ -28,12 +28,24 @@ export const query = graphql`
       _rawExcerpt(resolveReferences: { maxDepth: 5 })
       _rawBody(resolveReferences: { maxDepth: 5 })
     }
+    series: sanitySeries(posts: { elemMatch: { id: { eq: $id } } }) {
+      title
+      posts {
+        id
+        title
+        slug {
+          current
+        }
+      }
+    }
   }
 `
 
 const BlogPostTemplate = props => {
   const { data, errors } = props
   const post = data && data.post
+  const series = data && data.series
+
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
@@ -47,7 +59,7 @@ const BlogPostTemplate = props => {
 
       {errors && <GraphQLErrorList errors={errors} />}
 
-      {post && <BlogPost {...post} />}
+      {post && <BlogPost {...post} series={series} />}
     </Layout>
   )
 }

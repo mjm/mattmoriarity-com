@@ -6,6 +6,7 @@ import { Syndication } from './syndication'
 import styles from './blog.module.scss'
 import Mentions from './mentions'
 import useSiteMetadata from './site-metadata'
+import { Link } from 'gatsby'
 
 function BlogPost({
   _rawBody,
@@ -14,7 +15,8 @@ function BlogPost({
   mainImage,
   publishedAt,
   prettyPublishedAt,
-  syndication
+  syndication,
+  series
 }) {
   const { siteUrl } = useSiteMetadata()
   const url = slug.current && `${siteUrl}/${slug.current}/`
@@ -25,27 +27,27 @@ function BlogPost({
         <Img fluid={mainImage.asset.fluid} />
       )}
       <h1 className="p-name">{title}</h1>
-      {/* {series.parts.length ? (
-          <blockquote className={styles.series}>
-            <p>This article is part of a series on {series.about}:</p>
-            <ul>
-              {series.parts.map((part, index) => (
-                <li key={part.fields.slug}>
-                  {part.fields.slug === slug ? (
-                    <>
-                      Part {index + 1}: {part.frontmatter.title}
-                    </>
-                  ) : (
-                    <Link to={part.fields.slug}>
-                      Part {index + 1}: {part.frontmatter.title}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </blockquote>
-        ) : null}
-        <div
+      {series ? (
+        <blockquote className={styles.series}>
+          <p>This article is part of a series on {series.title}:</p>
+          <ul>
+            {series.posts.map((part, index) => (
+              <li key={part.id}>
+                {part.slug.current === slug.current ? (
+                  <>
+                    Part {index + 1}: {part.title}
+                  </>
+                ) : (
+                  <Link to={`/${part.slug.current}/`}>
+                    Part {index + 1}: {part.title}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </blockquote>
+      ) : null}
+      {/* <div
           className={styles.tableOfContents}
           dangerouslySetInnerHTML={{ __html: tableOfContents }}
         /> */}
