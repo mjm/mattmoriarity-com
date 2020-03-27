@@ -8,6 +8,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import page from './documents/page'
 import post from './documents/post'
 import microPost from './documents/microPost'
+import series from './documents/series'
 import project from './documents/project'
 import musicAlbum from './documents/musicAlbum'
 import siteSettings from './documents/siteSettings'
@@ -34,6 +35,7 @@ export default createSchema({
     page,
     post,
     microPost,
+    series,
     project,
     musicAlbum,
     mainImage,

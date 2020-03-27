@@ -5,7 +5,8 @@ import {
   MdComment,
   MdBuild,
   MdLibraryMusic,
-  MdInsertDriveFile
+  MdInsertDriveFile,
+  MdFormatListNumbered
 } from 'react-icons/lib/md'
 import IframePreview from '../previews/IframePreview'
 
@@ -74,6 +75,11 @@ export default () =>
         .icon(MdInsertDriveFile)
         .schemaType('page')
         .child(S.documentTypeList('page').title('Pages')),
+      S.listItem()
+        .title('Post series')
+        .icon(MdFormatListNumbered)
+        .schemaType('series')
+        .child(S.documentTypeList('series').title('Post series')),
       S.divider(),
       S.listItem()
         .title('Projects')
@@ -94,6 +100,7 @@ export default () =>
             'page',
             'post',
             'micropost',
+            'series',
             'project',
             'musicAlbum',
             'siteSettings'
