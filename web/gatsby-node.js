@@ -10,6 +10,7 @@ async function createSanityPages(graphql, { createPage }) {
           node {
             id
             publishedAt
+            month: publishedAt(formatString: "YYYY/MM")
             slug {
               current
             }
@@ -23,6 +24,7 @@ async function createSanityPages(graphql, { createPage }) {
           node {
             id
             publishedAt
+            month: publishedAt(formatString: "YYYY/MM")
             slug {
               current
             }
@@ -59,10 +61,12 @@ async function createSanityPages(graphql, { createPage }) {
   const pageEdges = (result.data.allSanityPage || {}).edges || []
   const projectEdges = (result.data.allSanityProject || {}).edges || []
 
+  const archiveMonths = new Set()
+
   postEdges
     .filter(edge => !isFuture(parseISO(edge.node.publishedAt)))
     .forEach(edge => {
-      const { id, slug = {} } = edge.node
+      const { id, slug = {}, month } = edge.node
       const path = `/${slug.current}/`
 
       createPage({
@@ -70,12 +74,14 @@ async function createSanityPages(graphql, { createPage }) {
         component: require.resolve('./src/templates/blog-post.js'),
         context: { id }
       })
+
+      archiveMonths.add(month)
     })
 
   micropostEdges
     .filter(edge => !isFuture(parseISO(edge.node.publishedAt)))
     .forEach(edge => {
-      const { id, slug = {} } = edge.node
+      const { id, slug = {}, month } = edge.node
       const path = `/${slug.current}/`
 
       createPage({
@@ -83,6 +89,8 @@ async function createSanityPages(graphql, { createPage }) {
         component: require.resolve('./src/templates/micropost.js'),
         context: { id }
       })
+
+      archiveMonths.add(month)
     })
 
   pageEdges.forEach(edge => {
@@ -106,6 +114,19 @@ async function createSanityPages(graphql, { createPage }) {
       context: { id }
     })
   })
+
+  for (const archiveMonth of archiveMonths) {
+    const [year, month] = archiveMonth.split('/')
+
+    createPage({
+      path: archiveMonth,
+      component: require.resolve('./src/templates/archive-page.js'),
+      context: {
+        dateStart: `${year}-${month}-00`,
+        dateEnd: `${year}-${month}-99`
+      }
+    })
+  }
 }
 
 exports.createPages = async ({ graphql, actions }) => {

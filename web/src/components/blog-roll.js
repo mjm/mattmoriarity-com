@@ -36,7 +36,9 @@ export const BlogRollEntry = ({ siteUrl, post, pinned }) => {
         )}
         <div className="e-content">
           <PortableText
-            blocks={post._type === 'post' ? post._rawExcerpt : post._rawBody}
+            blocks={
+              post._type === 'post' ? post._rawExcerpt || [] : post._rawBody
+            }
           />
         </div>
         {post._type === 'post' ? (

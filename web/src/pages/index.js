@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import orderBy from 'lodash/orderBy'
 import {
   mapEdgesToNodes,
@@ -11,6 +11,7 @@ import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import useSiteMetadata from '../components/site-metadata'
 import BlogRoll from '../components/blog-roll'
+import styles from '../components/blog.module.scss'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -35,6 +36,29 @@ export const query = graphql`
     }
   }
 
+  fragment BlogRollMicropost on SanityMicropost {
+    _type
+    id
+    slug {
+      current
+    }
+    prettyPublishedAt: publishedAt(formatString: "MMM D, Y")
+    publishedAt(formatString: "YYYY-MM-DDTHH:mm:ssZ")
+    _rawBody(resolveReferences: { maxDepth: 5 })
+  }
+
+  fragment BlogRollPost on SanityPost {
+    _type
+    id
+    title
+    _rawExcerpt
+    slug {
+      current
+    }
+    prettyPublishedAt: publishedAt(formatString: "MMM D, Y")
+    publishedAt(formatString: "YYYY-MM-DDTHH:mm:ssZ")
+  }
+
   query IndexPageQuery {
     microposts: allSanityMicropost(
       limit: 30
@@ -43,14 +67,7 @@ export const query = graphql`
     ) {
       edges {
         node {
-          _type
-          id
-          slug {
-            current
-          }
-          prettyPublishedAt: publishedAt(formatString: "MMM D, Y")
-          publishedAt(formatString: "YYYY-MM-DDTHH:mm:ssZ")
-          _rawBody(resolveReferences: { maxDepth: 5 })
+          ...BlogRollMicropost
         }
       }
     }
@@ -61,15 +78,7 @@ export const query = graphql`
     ) {
       edges {
         node {
-          _type
-          id
-          title
-          _rawExcerpt
-          slug {
-            current
-          }
-          prettyPublishedAt: publishedAt(formatString: "MMM D, Y")
-          publishedAt(formatString: "YYYY-MM-DDTHH:mm:ssZ")
+          ...BlogRollPost
         }
       }
     }
@@ -103,6 +112,11 @@ const IndexPage = ({ data, errors }) => {
     <Layout>
       <SEO title={site.title} description={site.description} />
       {postNodes && <BlogRoll posts={postNodes} />}
+      <div className={styles.seeMore}>
+        <p>
+          See more posts in the <Link to="/archives/">archives</Link>.
+        </p>
+      </div>
     </Layout>
   )
 }
