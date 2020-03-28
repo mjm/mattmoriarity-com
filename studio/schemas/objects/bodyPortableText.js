@@ -28,7 +28,8 @@ export default {
         // preference or highlighting by editors.
         decorators: [
           { title: 'Strong', value: 'strong' },
-          { title: 'Emphasis', value: 'em' }
+          { title: 'Emphasis', value: 'em' },
+          { title: 'Code', value: 'code' }
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -40,7 +41,8 @@ export default {
               {
                 title: 'URL',
                 name: 'href',
-                type: 'url'
+                type: 'url',
+                validation: Rule => Rule.uri({ allowRelative: true })
               }
             ]
           }

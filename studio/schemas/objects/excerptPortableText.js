@@ -14,7 +14,21 @@ export default {
           { title: 'Emphasis', value: 'em' },
           { title: 'Code', value: 'code' }
         ],
-        annotations: []
+        annotations: [
+          {
+            name: 'link',
+            type: 'object',
+            title: 'URL',
+            fields: [
+              {
+                title: 'URL',
+                name: 'href',
+                type: 'url',
+                validation: Rule => Rule.uri({ allowRelative: true })
+              }
+            ]
+          }
+        ]
       }
     }
   ]
