@@ -20,6 +20,13 @@ module.exports = {
       }
     },
     {
+      resolve: '@jamesdanylik/gatsby-source-goodreads',
+      options: {
+        key: process.env.GOODREADS_API_KEY,
+        id: '96331589'
+      }
+    },
+    {
       resolve: 'gatsby-plugin-sass',
       options: {
         implementation: require('sass')
