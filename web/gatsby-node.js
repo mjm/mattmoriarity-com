@@ -1,4 +1,4 @@
-const { isFuture } = require('date-fns')
+const { isFuture, parseISO } = require('date-fns')
 
 async function createSanityPages(graphql, { createPage }) {
   const result = await graphql(`
@@ -60,7 +60,7 @@ async function createSanityPages(graphql, { createPage }) {
   const projectEdges = (result.data.allSanityProject || {}).edges || []
 
   postEdges
-    .filter(edge => !isFuture(edge.node.publishedAt))
+    .filter(edge => !isFuture(parseISO(edge.node.publishedAt)))
     .forEach(edge => {
       const { id, slug = {} } = edge.node
       const path = `/${slug.current}/`
@@ -73,7 +73,7 @@ async function createSanityPages(graphql, { createPage }) {
     })
 
   micropostEdges
-    .filter(edge => !isFuture(edge.node.publishedAt))
+    .filter(edge => !isFuture(parseISO(edge.node.publishedAt)))
     .forEach(edge => {
       const { id, slug = {} } = edge.node
       const path = `/${slug.current}/`
