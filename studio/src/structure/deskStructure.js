@@ -6,7 +6,8 @@ import {
   MdBuild,
   MdLibraryMusic,
   MdInsertDriveFile,
-  MdFormatListNumbered
+  MdFormatListNumbered,
+  MdNextWeek
 } from 'react-icons/lib/md'
 import IframePreview from '../previews/IframePreview'
 
@@ -59,6 +60,15 @@ export default () =>
             .schemaType('siteSettings')
             .documentId('siteSettings')
         ),
+      S.listItem()
+        .title('Resume')
+        .icon(MdNextWeek)
+        .child(
+          S.editor()
+            .id('resume')
+            .schemaType('resume')
+            .documentId('resume')
+        ),
       S.divider(),
       S.listItem()
         .title('Blog posts')
@@ -103,7 +113,8 @@ export default () =>
             'series',
             'project',
             'musicAlbum',
-            'siteSettings'
+            'siteSettings',
+            'resume'
           ].includes(listItem.getId())
       )
     ])

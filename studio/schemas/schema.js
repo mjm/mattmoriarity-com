@@ -12,6 +12,7 @@ import series from './documents/series'
 import project from './documents/project'
 import musicAlbum from './documents/musicAlbum'
 import siteSettings from './documents/siteSettings'
+import resume from './documents/resume'
 
 // Object types
 import bodyPortableText from './objects/bodyPortableText'
@@ -21,6 +22,8 @@ import mainImage from './objects/mainImage'
 import syndication from './objects/syndication'
 import tweet from './objects/tweet'
 import youtube from './objects/youtube'
+import resumeEducation from './objects/resumeEducation'
+import resumeJob from './objects/resumeJob'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -32,6 +35,7 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     siteSettings,
+    resume,
     page,
     post,
     microPost,
@@ -44,7 +48,9 @@ export default createSchema({
     excerptPortableText,
     syndication,
     tweet,
-    youtube
+    youtube,
+    resumeEducation,
+    resumeJob
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
