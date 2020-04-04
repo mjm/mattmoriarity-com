@@ -8,6 +8,7 @@ import (
 	"github.com/gosimple/slug"
 	"github.com/honeycombio/libhoney-go"
 	"github.com/honeycombio/opentelemetry-exporter-go/honeycomb"
+	"github.com/mjm/courier-js/pkg/tracehttp"
 	"github.com/mjm/mpsanity"
 	"github.com/mjm/mpsanity/block"
 	"github.com/mjm/mpsanity/mpapi"
@@ -50,6 +51,8 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	sanity.HTTPClient.Transport = tracehttp.DefaultTransport
 
 	handler = mpapi.New(sanity,
 		mpapi.WithDocumentBuilder(&mpapi.DefaultDocumentBuilder{
