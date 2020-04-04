@@ -5,7 +5,9 @@
     "SANITY_DATASET": "testing",
     "SANITY_TOKEN": "@sanity-token",
     "BASE_URL": "https://www.mattmoriarity.com",
-    "NETLIFY_WEBHOOK_URL": "@netlify-webhook-url"
+    "NETLIFY_WEBHOOK_URL": "@netlify-webhook-url",
+    "HONEY_WRITE_KEY": "@honeycomb-write-key",
+    "HONEY_DATASET": "mattmoriarity.com"
   },
   "rewrites": [
     { "source": "/micropub/media", "destination": "/api/mp.go" },

@@ -6,11 +6,12 @@ import (
 	"os"
 
 	"github.com/gosimple/slug"
+	"github.com/honeycombio/libhoney-go"
+	"github.com/honeycombio/opentelemetry-exporter-go/honeycomb"
 	"github.com/mjm/mpsanity"
 	"github.com/mjm/mpsanity/block"
 	"github.com/mjm/mpsanity/mpapi"
 	"go.opentelemetry.io/otel/api/global"
-	"go.opentelemetry.io/otel/exporters/trace/stdout"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
@@ -19,13 +20,20 @@ var handler *mpapi.MicropubHandler
 func init() {
 	slug.MaxLength = 40
 
+	honeyWriteKey := os.Getenv("HONEY_WRITE_KEY")
+	honeyDataset := os.Getenv("HONEY_DATASET")
 	projectID := os.Getenv("SANITY_PROJECT_ID")
 	dataset := os.Getenv("SANITY_DATASET")
 	token := os.Getenv("SANITY_TOKEN")
 	baseURL := os.Getenv("BASE_URL")
 	webhookURL := os.Getenv("NETLIFY_WEBHOOK_URL")
 
-	exporter, err := stdout.NewExporter(stdout.Options{PrettyPrint: true})
+	exporter, err := honeycomb.NewExporter(
+		honeycomb.Config{
+			APIKey: honeyWriteKey,
+		},
+		honeycomb.TargetingDataset(honeyDataset),
+		honeycomb.WithServiceName("micropub-api"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -55,4 +63,5 @@ func init() {
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 	handler.ServeHTTP(w, r)
+	libhoney.Flush()
 }
