@@ -1,0 +1,6 @@
+/studio
+/web
+/node_modules
+blog-posts.*
+microblog-posts.*
+package*
