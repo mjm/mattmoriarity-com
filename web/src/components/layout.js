@@ -25,10 +25,7 @@ const Layout = ({ children }) => {
         ))}
         <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
         <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
-        <link
-          rel="micropub"
-          href="https://gatsby-blog.mjm.now.sh/api/micropub"
-        />
+        <link rel="micropub" href="https://mattmoriarity-com.now.sh/micropub" />
         <link
           rel="webmention"
           href={`https://webmention.io/${webmentionUsername}/webmention`}
