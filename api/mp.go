@@ -61,7 +61,8 @@ func init() {
 				block.YouTubeMarkdownRule)),
 		}),
 		mpapi.WithBaseURL(baseURL),
-		mpapi.WithWebhookURL(webhookURL))
+		mpapi.WithWebhookURL(webhookURL),
+		mpapi.WithIndieAuth("https://tokens.indieauth.com/token", baseURL))
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
