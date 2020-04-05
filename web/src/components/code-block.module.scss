@@ -11,13 +11,20 @@
 }
 
 .code[class*="language-"] {
-  font-family: 'JetBrains Mono', SF Mono, Menlo, Monaco, Consolas, Courier New, monospace;
   font-size: 13px;
-  font-variant-ligatures: none;
-  font-feature-settings: 'liga' 0;
   margin-top: 0;
   margin-bottom: 1rem;
   @include shadow;
+}
+
+:not(pre) > code {
+  font-size: 15px;
+}
+
+.code[class*="language-"], :not(pre) > code {
+  font-family: 'JetBrains Mono', SF Mono, Menlo, Monaco, Consolas, Courier New, monospace;
+  font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0;
 }
 
 .line {
