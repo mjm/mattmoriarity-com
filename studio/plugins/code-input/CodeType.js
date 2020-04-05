@@ -1,5 +1,10 @@
+import React from 'react'
 import MdCode from 'react-icons/lib/md/code'
-import { CodeInput } from './CodeInput'
+
+const CodeInput = props => {
+  const RealCodeInput = require('./CodeInput').CodeInput
+  return <RealCodeInput {...props} />
+}
 
 export default {
   name: 'code',

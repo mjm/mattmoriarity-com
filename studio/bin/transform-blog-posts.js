@@ -13,7 +13,7 @@ const bodyBlockContentType = postType.fields.find(
   field => field.name === 'body'
 ).type
 
-for (const post of input.data.allMarkdownRemark.nodes.slice(0, 1)) {
+for (const post of input.data.allMarkdownRemark.nodes) {
   const slug = post.fields.slug.substr(1, post.fields.slug.length - 2)
   const newPost = {
     _id: slug.replace(/[^a-zA-Z0-9._-]/g, '-'),
@@ -33,12 +33,12 @@ for (const post of input.data.allMarkdownRemark.nodes.slice(0, 1)) {
     post.excerpt,
     excerptBlockContentType,
     {
-      parseHtml: _html => new JSDOM(post.excerpt).window.document
+      parseHtml: html => new JSDOM(html).window.document
     }
   )
 
   newPost.body = blockTools.htmlToBlocks(post.html, bodyBlockContentType, {
-    parseHtml: _html => new JSDOM(post.html).window.document,
+    parseHtml: html => new JSDOM(html).window.document,
     rules: [
       {
         deserialize(el, _next, block) {
