@@ -7,7 +7,7 @@ import format from 'date-fns/format'
 import { mapEdgesToNodes } from '../lib/helpers'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
-import Layout from '../containers/layout'
+import Layout from '../components/layout'
 import styles from '../components/blog.module.scss'
 
 export const query = graphql`

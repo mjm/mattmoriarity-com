@@ -8,7 +8,7 @@ import {
 } from '../lib/helpers'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
-import Layout from '../containers/layout'
+import Layout from '../components/layout'
 import useSiteMetadata from '../components/site-metadata'
 import BlogRoll from '../components/blog-roll'
 import styles from '../components/blog.module.scss'

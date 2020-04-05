@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
-import Layout from '../containers/layout'
+import Layout from '../components/layout'
 import MicroblogPost from '../components/microblog-post'
 
 export const query = graphql`
