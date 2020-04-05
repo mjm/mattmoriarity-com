@@ -10,6 +10,7 @@ import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-json'
 import 'prismjs/components/prism-swift'
 
+Prism.languages.apache_conf = Prism.languages.apacheconf
 Prism.languages.golang = Prism.languages.go
 
 const CodeBlock = ({ node }) => {
