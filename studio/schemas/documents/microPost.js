@@ -45,7 +45,7 @@ export default {
       by: [
         {
           field: 'publishedAt',
-          direction: 'asc'
+          direction: 'desc'
         }
       ]
     },
@@ -55,7 +55,7 @@ export default {
       by: [
         {
           field: 'publishedAt',
-          direction: 'desc'
+          direction: 'asc'
         }
       ]
     }
