@@ -47,12 +47,8 @@ function BlogPost({
           </ul>
         </blockquote>
       ) : null}
-      {/* <div
-          className={styles.tableOfContents}
-          dangerouslySetInnerHTML={{ __html: tableOfContents }}
-        /> */}
       <div className="e-content">
-        <PortableText blocks={_rawBody} />
+        <PortableText blocks={_rawBody} tableOfContents />
       </div>
       <div className={styles.footer}>
         <DateBubble isoDate={publishedAt} className="dt-published">
