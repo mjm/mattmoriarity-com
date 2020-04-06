@@ -2,7 +2,7 @@
   "version": 2,
   "env": {
     "SANITY_PROJECT_ID": "u6863i7d",
-    "SANITY_DATASET": "testing",
+    "SANITY_DATASET": "production",
     "SANITY_TOKEN": "@sanity-token",
     "BASE_URL": "https://www.mattmoriarity.com",
     "NETLIFY_WEBHOOK_URL": "@netlify-webhook-url",
