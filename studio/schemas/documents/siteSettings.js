@@ -30,7 +30,7 @@ export default {
       of: [
         {
           type: 'url',
-          title: 'URL'
+          title: ''
         }
       ],
       title: 'Self links',

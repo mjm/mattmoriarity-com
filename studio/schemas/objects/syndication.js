@@ -4,7 +4,7 @@ export default {
   of: [
     {
       type: 'url',
-      title: 'URL'
+      title: ''
     }
   ],
   options: {
