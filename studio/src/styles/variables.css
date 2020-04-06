@@ -3,12 +3,12 @@
   https://www.sanity.io/guides/how-to-brand-your-studio
 */
 
-/* Custom fonts */
-/*
-  @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
-*/
+@import url('https://rsms.me/inter/inter.css');
 
 :root {
+  --font-family-sans-serif: 'Inter';
+  --main-navigation-color: #1f004b;
+
   /* Brand colors */
   /*
   --brand-primary: var(--brand-primary);
