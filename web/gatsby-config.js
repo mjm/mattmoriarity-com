@@ -10,6 +10,7 @@ const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-netlify-cache',
     {
       resolve: 'gatsby-source-sanity',
       options: {
@@ -39,6 +40,7 @@ module.exports = {
         pathToConfigModule: 'src/lib/typography',
         omitGoogleFont: true
       }
-    }
+    },
+    'gatsby-plugin-netlify'
   ]
 }
