@@ -4,8 +4,14 @@ import { TwitterTweetEmbed } from 'react-twitter-embed'
 const urlRegex = /^https:\/\/twitter.com\/.*\/status\/(\d+)/
 
 const TweetPreview = ({ value }) => {
-  const [, tweetId] = value.url.match(urlRegex)
-  return <TwitterTweetEmbed tweetId={tweetId} />
+  if (!value || !value.url) {
+    return 'no tweet URL set'
+  }
+  const match = value.url.match(urlRegex)
+  if (!match) {
+    return 'non-Twitter URL set'
+  }
+  return <TwitterTweetEmbed tweetId={match[1]} placeholder="Loading tweet…" />
 }
 
 export default {

@@ -3,8 +3,13 @@ import getYouTubeId from 'get-youtube-id'
 import YouTube from 'react-youtube'
 
 const Preview = ({ value }) => {
-  const { url } = value
-  const id = getYouTubeId(url)
+  if (!value || !value.url) {
+    return 'no YouTube video URL set'
+  }
+  const id = getYouTubeId(value.url)
+  if (!id) {
+    return 'non-YouTube URL set'
+  }
   return <YouTube videoId={id} />
 }
 
