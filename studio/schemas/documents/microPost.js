@@ -62,11 +62,14 @@ export default {
   ],
   preview: {
     select: {
-      body: 'body'
+      body: 'body',
+      slug: 'slug.current'
     },
-    prepare({ body }) {
+    prepare({ body, slug }) {
       return {
-        title: toPlainText(body) || 'No title'
+        title: toPlainText(body) || 'No title',
+        subtitle: slug ? `/${slug}/` : '(no url)',
+        media: getFirstImage(body)
       }
     }
   }
@@ -85,4 +88,8 @@ function toPlainText(blocks) {
         .map(span => span.text)
         .join('')
     : ''
+}
+
+function getFirstImage(blocks) {
+  return (blocks || []).find(block => block._type === 'mainImage')
 }

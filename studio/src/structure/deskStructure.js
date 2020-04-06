@@ -64,22 +64,37 @@ export default () =>
         .title('Resume')
         .icon(MdNextWeek)
         .child(
-          S.editor()
-            .id('resume')
-            .schemaType('resume')
-            .documentId('resume')
+          S.editor().id('resume').schemaType('resume').documentId('resume')
         ),
       S.divider(),
       S.listItem()
         .title('Blog posts')
         .icon(MdDescription)
         .schemaType('post')
-        .child(S.documentTypeList('post').title('Blog posts')),
+        .child(
+          S.documentTypeList('post')
+            .defaultOrdering([
+              {
+                field: 'publishedAt',
+                direction: 'desc'
+              }
+            ])
+            .title('Blog posts')
+        ),
       S.listItem()
         .title('Microblog posts')
         .icon(MdComment)
         .schemaType('micropost')
-        .child(S.documentTypeList('micropost').title('Microblog posts')),
+        .child(
+          S.documentTypeList('micropost')
+            .defaultOrdering([
+              {
+                field: 'publishedAt',
+                direction: 'desc'
+              }
+            ])
+            .title('Microblog posts')
+        ),
       S.listItem()
         .title('Pages')
         .icon(MdInsertDriveFile)
@@ -100,7 +115,11 @@ export default () =>
         .title('Music albums')
         .icon(MdLibraryMusic)
         .schemaType('musicAlbum')
-        .child(S.documentTypeList('musicAlbum').title('Music albums')),
+        .child(
+          S.documentTypeList('musicAlbum')
+            .defaultOrdering([{ field: 'name', direction: 'asc' }])
+            .title('Music albums')
+        ),
       // `S.documentTypeListItems()` returns an array of all the document types
       // defined in schema.js. We filter out those that we have
       // defined the structure above.
