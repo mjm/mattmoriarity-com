@@ -1,6 +1,7 @@
 import React from 'react'
 import getYouTubeId from 'get-youtube-id'
 import YouTube from 'react-youtube'
+import { IoSocialYoutube } from 'react-icons/lib/io'
 
 const Preview = ({ value }) => {
   if (!value || !value.url) {
@@ -17,6 +18,7 @@ export default {
   name: 'youtube',
   type: 'object',
   title: 'YouTube Video',
+  icon: IoSocialYoutube,
   fields: [
     {
       name: 'url',

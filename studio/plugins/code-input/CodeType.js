@@ -1,5 +1,5 @@
 import React from 'react'
-import MdCode from 'react-icons/lib/md/code'
+import { GoCode } from 'react-icons/lib/go'
 
 const CodeInput = props => {
   const RealCodeInput = require('./CodeInput').CodeInput
@@ -10,7 +10,7 @@ export default {
   name: 'code',
   type: 'object',
   title: 'Code',
-  icon: MdCode,
+  icon: GoCode,
   inputComponent: CodeInput,
   fields: [
     {
