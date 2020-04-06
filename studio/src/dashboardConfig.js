@@ -15,7 +15,7 @@ export default {
       name: 'document-list',
       options: {
         title: 'Recent blog posts',
-        order: '_createdAt desc',
+        order: 'publishedAt desc',
         types: ['post'],
         limit: 5
       },
