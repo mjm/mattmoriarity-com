@@ -1,4 +1,4 @@
-import { MdImage } from 'react-icons/lib/md'
+import { MdImage } from 'react-icons/md'
 
 export default {
   name: 'mainImage',

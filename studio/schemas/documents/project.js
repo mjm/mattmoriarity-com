@@ -1,7 +1,10 @@
+import { MdBuild } from 'react-icons/md'
+
 export default {
   name: 'project',
   type: 'document',
   title: 'Project',
+  icon: MdBuild,
   fields: [
     {
       name: 'name',

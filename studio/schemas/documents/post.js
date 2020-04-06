@@ -1,9 +1,11 @@
 import { format } from 'date-fns'
+import { MdDescription } from 'react-icons/md'
 
 export default {
   name: 'post',
   type: 'document',
   title: 'Blog Post',
+  icon: MdDescription,
   fields: [
     {
       name: 'title',

@@ -1,7 +1,10 @@
+import { MdSettings } from 'react-icons/md'
+
 export default {
   name: 'siteSettings',
   type: 'document',
   title: 'Site Settings',
+  icon: MdSettings,
   __experimental_actions: ['update', /* 'create', 'delete', */ 'publish'],
   fields: [
     {

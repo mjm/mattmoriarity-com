@@ -1,7 +1,10 @@
+import { MdLibraryMusic } from 'react-icons/md'
+
 export default {
   name: 'musicAlbum',
   type: 'document',
   title: 'Music Album',
+  icon: MdLibraryMusic,
   fields: [
     {
       name: 'name',

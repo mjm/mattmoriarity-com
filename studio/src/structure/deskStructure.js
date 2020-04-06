@@ -1,14 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
-import MdSettings from 'react-icons/lib/md/settings'
-import {
-  MdDescription,
-  MdComment,
-  MdBuild,
-  MdLibraryMusic,
-  MdInsertDriveFile,
-  MdFormatListNumbered,
-  MdNextWeek
-} from 'react-icons/lib/md'
+import { MdSettings, MdNextWeek } from 'react-icons/md'
 import IframePreview from '../previews/IframePreview'
 
 // Web preview configuration
@@ -69,7 +60,6 @@ export default () =>
       S.divider(),
       S.listItem()
         .title('Blog posts')
-        .icon(MdDescription)
         .schemaType('post')
         .child(
           S.documentTypeList('post')
@@ -83,7 +73,6 @@ export default () =>
         ),
       S.listItem()
         .title('Microblog posts')
-        .icon(MdComment)
         .schemaType('micropost')
         .child(
           S.documentTypeList('micropost')
@@ -97,23 +86,19 @@ export default () =>
         ),
       S.listItem()
         .title('Pages')
-        .icon(MdInsertDriveFile)
         .schemaType('page')
         .child(S.documentTypeList('page').title('Pages')),
       S.listItem()
         .title('Post series')
-        .icon(MdFormatListNumbered)
         .schemaType('series')
         .child(S.documentTypeList('series').title('Post series')),
       S.divider(),
       S.listItem()
         .title('Projects')
-        .icon(MdBuild)
         .schemaType('project')
         .child(S.documentTypeList('project').title('Projects')),
       S.listItem()
         .title('Music albums')
-        .icon(MdLibraryMusic)
         .schemaType('musicAlbum')
         .child(
           S.documentTypeList('musicAlbum')

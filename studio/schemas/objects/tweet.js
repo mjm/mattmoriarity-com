@@ -1,6 +1,6 @@
 import React from 'react'
 import { TwitterTweetEmbed } from 'react-twitter-embed'
-import { IoSocialTwitter } from 'react-icons/lib/io'
+import { IoLogoTwitter } from 'react-icons/io'
 
 const urlRegex = /^https:\/\/twitter.com\/.*\/status\/(\d+)/
 
@@ -19,7 +19,7 @@ export default {
   name: 'tweet',
   type: 'object',
   title: 'Tweet',
-  icon: IoSocialTwitter,
+  icon: IoLogoTwitter,
   fields: [
     {
       name: 'url',

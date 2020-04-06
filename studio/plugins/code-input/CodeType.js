@@ -1,5 +1,6 @@
 import React from 'react'
-import { GoCode } from 'react-icons/lib/go'
+import { GoCode } from 'react-icons/go'
+import { DiCode, DiGo, DiJavascript1, DiSwift } from 'react-icons/di'
 
 const CodeInput = React.forwardRef((props, ref) => {
   const RealCodeInput = require('./CodeInput').CodeInput
@@ -23,5 +24,24 @@ export default {
       name: 'language',
       type: 'string'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      language: 'language'
+    },
+    prepare({ language }) {
+      switch (language) {
+        case 'golang':
+          return { title: 'Go', media: DiGo }
+        case 'javascript':
+          return { title: 'JavaScript', media: DiJavascript1 }
+        case 'json':
+          return { title: 'JSON', media: DiCode }
+        case 'swift':
+          return { title: 'Swift', media: DiSwift }
+        default:
+          return { title: language, media: DiCode }
+      }
+    }
+  }
 }

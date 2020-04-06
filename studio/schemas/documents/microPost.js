@@ -1,10 +1,12 @@
 import format from 'date-fns/format'
 import * as rs from 'randomstring'
+import { MdComment } from 'react-icons/md'
 
 export default {
   name: 'micropost',
   type: 'document',
   title: 'Microblog Post',
+  icon: MdComment,
   fields: [
     {
       name: 'body',
