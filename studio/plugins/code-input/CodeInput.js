@@ -31,59 +31,75 @@ const supportedLanguages = [
   { title: 'Swift', value: 'swift' }
 ]
 
-export const CodeInput = ({ type, value, level, onChange }) => {
-  const languages = supportedLanguages.slice()
+export const CodeInput = React.forwardRef(
+  ({ type, value, level, onChange }, ref) => {
+    const editor = React.useRef(null)
+    React.useImperativeHandle(ref, () => ({
+      focus() {
+        editor.current && editor.current.focus()
+      }
+    }))
 
-  const selectedLanguage =
-    value && value.language
-      ? languages.find(item => item.value === value.language)
-      : undefined
+    const languages = supportedLanguages.slice()
 
-  if (!selectedLanguage) {
-    languages.unshift({ title: 'Select language' })
-  }
+    const selectedLanguage =
+      value && value.language
+        ? languages.find(item => item.value === value.language)
+        : undefined
 
-  const languageField = type.fields.find(field => field.name === 'language')
+    if (!selectedLanguage) {
+      languages.unshift({ title: 'Select language' })
+    }
 
-  function onLanguageChange(item) {
-    onChange(
-      PatchEvent.from([
-        setIfMissing({ _type: type.name }),
-        item ? set(item.value, ['language']) : unset(['language'])
-      ])
+    const languageField = type.fields.find(field => field.name === 'language')
+
+    function onLanguageChange(item) {
+      onChange(
+        PatchEvent.from([
+          setIfMissing({ _type: type.name }),
+          item ? set(item.value, ['language']) : unset(['language'])
+        ])
+      )
+    }
+
+    function onCodeChange(code) {
+      onChange(
+        PatchEvent.from([
+          setIfMissing({ _type: type.name }),
+          code ? set(code, ['code']) : unset(['code'])
+        ])
+      )
+    }
+
+    return (
+      <Fieldset
+        legend={type.title}
+        description={type.description}
+        level={level}>
+        <FormField level={level + 1} label={languageField.type.title}>
+          <DefaultSelect
+            onChange={onLanguageChange}
+            value={selectedLanguage}
+            items={languages}
+          />
+        </FormField>
+        <FormField
+          label={(selectedLanguage && selectedLanguage.title) || 'Code'}
+          level={level + 1}>
+          <AceEditor
+            onLoad={theEditor => {
+              editor.current = theEditor
+              editor.current.focus()
+            }}
+            mode={(selectedLanguage && selectedLanguage.value) || 'text'}
+            theme="github"
+            width="100%"
+            value={(value && value.code) || ''}
+            onChange={onCodeChange}
+            tabSize={2}
+          />
+        </FormField>
+      </Fieldset>
     )
   }
-
-  function onCodeChange(code) {
-    onChange(
-      PatchEvent.from([
-        setIfMissing({ _type: type.name }),
-        code ? set(code, ['code']) : unset(['code'])
-      ])
-    )
-  }
-
-  return (
-    <Fieldset legend={type.title} description={type.description} level={level}>
-      <FormField level={level + 1} label={languageField.type.title}>
-        <DefaultSelect
-          onChange={onLanguageChange}
-          value={selectedLanguage}
-          items={languages}
-        />
-      </FormField>
-      <FormField
-        label={(selectedLanguage && selectedLanguage.title) || 'Code'}
-        level={level + 1}>
-        <AceEditor
-          mode={(selectedLanguage && selectedLanguage.value) || 'text'}
-          theme="github"
-          width="100%"
-          value={(value && value.code) || ''}
-          onChange={onCodeChange}
-          tabSize={2}
-        />
-      </FormField>
-    </Fieldset>
-  )
-}
+)

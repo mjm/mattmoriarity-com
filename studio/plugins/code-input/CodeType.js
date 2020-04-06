@@ -1,10 +1,10 @@
 import React from 'react'
 import { GoCode } from 'react-icons/lib/go'
 
-const CodeInput = props => {
+const CodeInput = React.forwardRef((props, ref) => {
   const RealCodeInput = require('./CodeInput').CodeInput
-  return <RealCodeInput {...props} />
-}
+  return <RealCodeInput ref={ref} {...props} />
+})
 
 export default {
   name: 'code',
