@@ -26,6 +26,7 @@ module.exports = {
         id: '96331589'
       }
     },
+    'gatsby-plugin-feeds',
     {
       resolve: 'gatsby-plugin-sass',
       options: {
