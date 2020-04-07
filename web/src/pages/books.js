@@ -13,6 +13,10 @@ const ReadingList = ({ data }) => {
   return (
     <Layout>
       <SEO title="Reading List" />
+      <p className={styles.links}>
+        <a href="#reading">Currently Reading</a> |{' '}
+        <a href="#to-read">To Read</a> | <a href="#finished">Finished</a>
+      </p>
       <div className="h-feed">
         <BooksSection
           title="Currently Reading"
@@ -58,7 +62,7 @@ const BooksSection = ({ title, status, reviews }) => {
 
   return (
     <section className={styles.section}>
-      <h2>{title}</h2>
+      <h2 id={status}>{title}</h2>
       <ul className={styles.books}>
         {reviews.map(r => (
           <BookReview key={r.id} review={r} status={status} />
