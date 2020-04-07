@@ -7,6 +7,6 @@ require (
 	github.com/honeycombio/libhoney-go v1.12.4
 	github.com/honeycombio/opentelemetry-exporter-go v0.4.0
 	github.com/mjm/courier-js v0.0.0-20200330054733-06c149e9fba5
-	github.com/mjm/mpsanity v0.0.0-20200405002615-72a8d4d3165c
+	github.com/mjm/mpsanity v0.0.0-20200407045043-0a7e0257f549
 	go.opentelemetry.io/otel v0.4.2
 )
