@@ -5,6 +5,7 @@
   "author": "Sanity <hello@sanity.io>",
   "scripts": {
     "build": "gatsby build",
+    "build-functions": "go build -o functions/deploy-succeeded ./functions/deploy-succeeded.go",
     "clean-cache": "gatsby clean",
     "dev": "npm run clean-cache && gatsby develop",
     "lint": "eslint .",
