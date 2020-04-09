@@ -38,6 +38,10 @@
   }
 }
 
+.website {
+  @extend %pill;
+}
+
 .repository {
   @extend %pill;
 }
@@ -53,10 +57,14 @@
   margin-bottom: spacing(5);
   @include shadow;
 
-  a {
+  & > a {
     display: block;
     padding: spacing(4);
     text-decoration: none;
+  }
+
+  & > * a {
+    color: var(--link-color);
   }
 
   h3,

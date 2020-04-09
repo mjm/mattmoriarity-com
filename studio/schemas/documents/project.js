@@ -26,9 +26,16 @@ export default {
       title: 'GitHub repository slug'
     },
     {
+      name: 'website',
+      type: 'url',
+      title: 'Web site',
+      description: 'Site for the project itself, rather than its source code'
+    },
+    {
       name: 'description',
       type: 'excerptPortableText',
-      title: 'Description'
+      title: 'Description',
+      description: 'Shown in the list of projects, but not on the project page'
     },
     {
       name: 'uses',

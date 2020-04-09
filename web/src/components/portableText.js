@@ -5,6 +5,10 @@ import BasePortableText from '@sanity/block-content-to-react'
 import serializers from './serializers'
 
 const PortableText = ({ blocks, tableOfContents = false }) => {
+  if (!blocks) {
+    return null
+  }
+
   addSlugsToHeaders(blocks)
 
   return (

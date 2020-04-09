@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { FaGithub, FaTools } from 'react-icons/fa'
+import { FaGithub, FaLink, FaTools } from 'react-icons/fa'
 import styles from '../styles/project.module.scss'
 import PortableText from '../components/portableText'
 import Layout from '../components/layout'
@@ -10,6 +10,7 @@ export const query = graphql`
   query ProjectTemplateQuery($id: String!) {
     project: sanityProject(id: { eq: $id }) {
       name
+      website
       repository
       uses
       _rawBody(resolveReferences: { maxDepth: 5 })
@@ -32,6 +33,16 @@ const ProjectTemplate = ({ data, errors }) => {
       <article className="h-entry">
         <h2 className="p-name">{project.name}</h2>
         <div className={styles.metadata}>
+          {project.website && (
+            <div>
+              <a href={project.website} className={styles.website}>
+                <FaLink />
+                <span className={styles.label}>
+                  {project.website.replace(/^https:\/\//, '')}
+                </span>
+              </a>
+            </div>
+          )}
           {project.repository && (
             <div>
               <a
