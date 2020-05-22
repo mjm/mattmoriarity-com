@@ -10,7 +10,7 @@ const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-netlify-cache',
+    // 'gatsby-plugin-netlify-cache',
     {
       resolve: 'gatsby-source-sanity',
       options: {

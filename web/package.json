@@ -4,7 +4,7 @@
   "version": "1.0.1",
   "author": "Sanity <hello@sanity.io>",
   "scripts": {
-    "build": "gatsby build",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "build-functions": "cd functions && go build -o deploy-succeeded ./deploy-succeeded.go",
     "clean-cache": "gatsby clean",
     "dev": "npm run clean-cache && gatsby develop",
@@ -28,7 +28,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-standard": "^4.0.1",
-    "gatsby": "^2.20.4",
+    "gatsby": "^2.22.9",
     "gatsby-plugin-postcss": "^2.0.7",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-source-sanity": "^4.0.3",
