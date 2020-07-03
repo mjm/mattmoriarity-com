@@ -5,6 +5,7 @@ import { GoLink } from 'react-icons/go'
 import Figure from './Figure'
 import TweetBlock from './tweet-block'
 import YouTubeBlock from './youtube-block'
+import GistBlock from './gist-block'
 import CodeBlock from './code-block'
 import styles from './blog.module.scss'
 
@@ -40,6 +41,7 @@ const serializers = {
     mainImage: Figure,
     tweet: TweetBlock,
     youtube: YouTubeBlock,
+    gist: GistBlock,
     code: CodeBlock
   },
   marks: {

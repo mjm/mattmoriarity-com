@@ -22,6 +22,7 @@ import mainImage from './objects/mainImage'
 import syndication from './objects/syndication'
 import tweet from './objects/tweet'
 import youtube from './objects/youtube'
+import gist from './objects/gist'
 import resumeEducation from './objects/resumeEducation'
 import resumeJob from './objects/resumeJob'
 
@@ -49,6 +50,7 @@ export default createSchema({
     syndication,
     tweet,
     youtube,
+    gist,
     resumeEducation,
     resumeJob
 

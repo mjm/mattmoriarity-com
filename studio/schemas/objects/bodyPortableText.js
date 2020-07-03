@@ -67,6 +67,9 @@ export default {
       options: {
         theme: 'github'
       }
+    },
+    {
+      type: 'gist'
     }
   ]
 }
