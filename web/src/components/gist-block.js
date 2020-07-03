@@ -1,3 +1,4 @@
+import 'regenerator-runtime'
 import React from 'react'
 import ReactEmbedGist from 'react-embed-gist'
 
