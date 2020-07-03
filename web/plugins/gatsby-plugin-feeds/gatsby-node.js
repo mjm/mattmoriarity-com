@@ -151,7 +151,9 @@ function serializeBody(body) {
         mainImage: ({ node: { asset } }) =>
           h('figure', h('img', { src: asset.url })),
         tweet: ({ node: { html = '' } }) => h('p', { innerHTML: html }),
-        youtube: ({ node: { html = '' } }) => h('p', { innerHTML: html })
+        youtube: ({ node: { html = '' } }) => h('p', { innerHTML: html }),
+        gist: ({ node: { url } }) =>
+          h('p', h('a', { href: url, target: '_blank' }, 'View Gist on GitHub'))
       }
     }
   })
