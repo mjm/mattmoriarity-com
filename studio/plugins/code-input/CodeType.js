@@ -1,6 +1,7 @@
 import React from 'react'
 import { GoCode } from 'react-icons/go'
 import { DiCode, DiGo, DiJavascript1, DiSwift } from 'react-icons/di'
+import { SiTerraform } from 'react-icons/si'
 
 const CodeInput = React.forwardRef((props, ref) => {
   const RealCodeInput = require('./CodeInput').CodeInput
@@ -23,6 +24,11 @@ export default {
       title: 'Language',
       name: 'language',
       type: 'string'
+    },
+    {
+      title: 'Highlighted lines',
+      name: 'highlightLines',
+      type: 'string'
     }
   ],
   preview: {
@@ -33,6 +39,8 @@ export default {
       switch (language) {
         case 'golang':
           return { title: 'Go', media: DiGo }
+        case 'hcl':
+          return { title: 'HCL', media: SiTerraform }
         case 'javascript':
           return { title: 'JavaScript', media: DiJavascript1 }
         case 'json':

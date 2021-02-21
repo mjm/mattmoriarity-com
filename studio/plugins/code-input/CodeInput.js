@@ -9,6 +9,7 @@ import {
 import FormField from 'part:@sanity/components/formfields/default'
 import Fieldset from 'part:@sanity/components/fieldsets/default'
 import DefaultSelect from 'part:@sanity/components/selects/default'
+import TextField from 'part:@sanity/components/textfields/default'
 
 import 'ace-builds/src-noconflict/mode-apache_conf'
 import 'ace-builds/src-noconflict/mode-elm'
@@ -17,18 +18,22 @@ import 'ace-builds/src-noconflict/mode-html'
 import 'ace-builds/src-noconflict/mode-javascript'
 import 'ace-builds/src-noconflict/mode-json'
 import 'ace-builds/src-noconflict/mode-swift'
+import 'ace-builds/src-noconflict/mode-terraform'
 import 'ace-builds/src-noconflict/mode-text'
+import 'ace-builds/src-noconflict/mode-yaml'
 import 'ace-builds/src-noconflict/theme-github'
 
 const supportedLanguages = [
   { title: 'Apache conf', value: 'apache_conf' },
   { title: 'Elm', value: 'elm' },
   { title: 'Go', value: 'golang' },
+  { title: 'HCL', value: 'hcl', editorLanguage: 'terraform' },
   { title: 'HTML', value: 'html' },
   { title: 'JavaScript', value: 'javascript' },
   { title: 'JSON', value: 'json' },
   { title: 'Plain text', value: 'text' },
-  { title: 'Swift', value: 'swift' }
+  { title: 'Swift', value: 'swift' },
+  { title: 'YAML', value: 'yaml' }
 ]
 
 export const CodeInput = React.forwardRef(
@@ -52,12 +57,26 @@ export const CodeInput = React.forwardRef(
     }
 
     const languageField = type.fields.find(field => field.name === 'language')
+    const highlightedLinesField = type.fields.find(
+      field => field.name === 'highlightLines'
+    )
 
     function onLanguageChange(item) {
       onChange(
         PatchEvent.from([
           setIfMissing({ _type: type.name }),
           item ? set(item.value, ['language']) : unset(['language'])
+        ])
+      )
+    }
+
+    function onHighlightedLinesChange(e) {
+      onChange(
+        PatchEvent.from([
+          setIfMissing({ _type: type.name }),
+          e.target.value
+            ? set(e.target.value, ['highlightLines'])
+            : unset(['highlightLines'])
         ])
       )
     }
@@ -71,6 +90,11 @@ export const CodeInput = React.forwardRef(
       )
     }
 
+    const editorLanguage =
+      (selectedLanguage &&
+        (selectedLanguage.editorLanguage || selectedLanguage.value)) ||
+      'text'
+
     return (
       <Fieldset
         legend={type.title}
@@ -83,6 +107,11 @@ export const CodeInput = React.forwardRef(
             items={languages}
           />
         </FormField>
+        <TextField
+          label={highlightedLinesField.type.title}
+          onChange={onHighlightedLinesChange}
+          value={(value && value.highlightLines) || ''}
+        />
         <FormField
           label={(selectedLanguage && selectedLanguage.title) || 'Code'}
           level={level + 1}>
@@ -91,7 +120,7 @@ export const CodeInput = React.forwardRef(
               editor.current = theEditor
               editor.current.focus()
             }}
-            mode={(selectedLanguage && selectedLanguage.value) || 'text'}
+            mode={editorLanguage}
             theme="github"
             width="100%"
             value={(value && value.code) || ''}

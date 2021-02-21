@@ -34,7 +34,7 @@
     "react-ace": "^8.1.0",
     "react-dom": "^16.8.6",
     "react-embed-gist": "^1.0.10",
-    "react-icons": "^3.9.0",
+    "react-icons": "^4.2.0",
     "react-twitter-embed": "^3.0.3",
     "react-youtube": "^7.9.0",
     "regenerator-runtime": "^0.13.5",

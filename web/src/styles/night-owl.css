@@ -74,6 +74,15 @@ code[class*='language-'] ::selection {
   background: var(--selection-background);
 }
 
+.highlight-line {
+  background-color: var(--selection-background);
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
 @media print {
   code[class*='language-'],
   pre[class*='language-'] {
