@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/seo'
-import styles from '../styles/music.module.scss'
+import * as styles from '../styles/music.module.scss'
 import { mapEdgesToNodes } from '../lib/helpers'
 
 export const query = graphql`

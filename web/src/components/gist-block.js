@@ -2,7 +2,7 @@ import 'regenerator-runtime'
 import React from 'react'
 import ReactEmbedGist from 'react-embed-gist'
 
-import styles from './gist-block.module.scss'
+import { gistTitle } from './gist-block.module.scss'
 
 const urlRegex = /^https:\/\/gist\.github\.com\/(.*)\/?/
 
@@ -14,7 +14,7 @@ const GistBlock = ({ node }) => {
   if (!match) {
     return null
   }
-  return <ReactEmbedGist gist={match[1]} titleClass={styles.gistTitle} />
+  return <ReactEmbedGist gist={match[1]} titleClass={gistTitle} />
 }
 
 export default GistBlock

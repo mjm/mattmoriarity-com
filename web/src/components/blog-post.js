@@ -3,7 +3,7 @@ import Img from 'gatsby-image'
 import PortableText from './portableText'
 import DateBubble from './date-bubble'
 import { Syndication } from './syndication'
-import styles from './blog.module.scss'
+import { series, footer } from './blog.module.scss'
 import Mentions from './mentions'
 import useSiteMetadata from './site-metadata'
 import { Link } from 'gatsby'
@@ -28,7 +28,7 @@ function BlogPost({
       )}
       <h1 className="p-name">{title}</h1>
       {series ? (
-        <blockquote className={styles.series}>
+        <blockquote className={series}>
           <p>This article is part of a series on {series.title}:</p>
           <ul>
             {series.posts.map((part, index) => (
@@ -50,7 +50,7 @@ function BlogPost({
       <div className="e-content">
         <PortableText blocks={_rawBody} tableOfContents />
       </div>
-      <div className={styles.footer}>
+      <div className={footer}>
         <DateBubble isoDate={publishedAt} className="dt-published">
           {prettyPublishedAt}
         </DateBubble>

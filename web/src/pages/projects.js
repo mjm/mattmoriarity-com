@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
-import styles from '../styles/project.module.scss'
+import { cell } from '../styles/project.module.scss'
 import GraphQLErrorList from '../components/graphql-error-list'
 import { mapEdgesToNodes } from '../lib/helpers'
 import PortableText from '../components/portableText'
@@ -35,7 +35,7 @@ const ProjectsPage = ({ data, errors }) => {
 
 const ProjectCell = ({ project }) => {
   return (
-    <div className={styles.cell}>
+    <div className={cell}>
       <Link to={`/projects/${project.slug.current}`}>
         <h3>{project.name}</h3>
         <PortableText blocks={project._rawDescription} />

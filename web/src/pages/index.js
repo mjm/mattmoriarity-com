@@ -11,7 +11,7 @@ import SEO from '../components/seo'
 import Layout from '../components/layout'
 import useSiteMetadata from '../components/site-metadata'
 import BlogRoll from '../components/blog-roll'
-import styles from '../components/blog.module.scss'
+import { seeMore } from '../components/blog.module.scss'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -112,7 +112,7 @@ const IndexPage = ({ data, errors }) => {
     <Layout>
       <SEO title={site.title} description={site.description} />
       {postNodes && <BlogRoll posts={postNodes} />}
-      <div className={styles.seeMore}>
+      <div className={seeMore}>
         <p>
           See more posts in the <Link to="/archives/">archives</Link>.
         </p>

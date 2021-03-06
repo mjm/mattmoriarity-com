@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import styles from './date-bubble.module.scss'
+import * as styles from './date-bubble.module.scss'
 
 const DateBubble = ({ isoDate, className, ...props }) => {
   return (

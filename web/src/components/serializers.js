@@ -7,7 +7,7 @@ import TweetBlock from './tweet-block'
 import YouTubeBlock from './youtube-block'
 import GistBlock from './gist-block'
 import CodeBlock from './code-block'
-import styles from './blog.module.scss'
+import { anchor } from './blog.module.scss'
 
 const BlockRenderer = props => {
   const { style = 'normal', slug = '' } = props.node
@@ -15,7 +15,7 @@ const BlockRenderer = props => {
     const Component = style
     return (
       <Component id={slug} style={{ position: 'relative' }}>
-        <a href={`#${slug}`} className={styles.anchor}>
+        <a href={`#${slug}`} className={anchor}>
           <GoLink size={16} />
         </a>
         {props.children}

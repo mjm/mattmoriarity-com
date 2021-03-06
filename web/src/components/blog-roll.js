@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import useSiteMetadata from './site-metadata'
 import { FaComment, FaThumbtack, FaHeart } from 'react-icons/fa'
 import { DateBubbleLink } from './date-bubble'
-import styles from './blog.module.scss'
+import * as styles from './blog.module.scss'
 import { MentionCount } from './mentions'
 import PortableText from './portableText'
 

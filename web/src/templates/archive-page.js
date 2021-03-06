@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import GraphQLErrorList from '../components/graphql-error-list'
 import { mapEdgesToNodes } from '../lib/helpers'
 import BlogRoll from '../components/blog-roll'
-import styles from '../components/blog.module.scss'
+import { archiveTitle } from '../components/blog.module.scss'
 
 export const query = graphql`
   query ArchivePageTemplateQuery($dateStart: Date!, $dateEnd: Date!) {
@@ -61,7 +61,7 @@ const ArchivePageTemplate = ({ data, errors, pageContext: { dateStart } }) => {
 
   return (
     <Layout>
-      <h2 className={styles.archiveTitle}>{title}</h2>
+      <h2 className={archiveTitle}>{title}</h2>
       <BlogRoll posts={allPosts} />
     </Layout>
   )

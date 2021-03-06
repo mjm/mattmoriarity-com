@@ -1,6 +1,6 @@
 import React from 'react'
 import PortableText from './portableText'
-import styles from './blog.module.scss'
+import { footer } from './blog.module.scss'
 import DateBubble from './date-bubble'
 import Mentions from './mentions'
 import useSiteMetadata from './site-metadata'
@@ -21,7 +21,7 @@ const MicroblogPost = ({
       <div className="p-name e-content">
         <PortableText blocks={_rawBody} />
       </div>
-      <div className={styles.footer}>
+      <div className={footer}>
         <DateBubble isoDate={publishedAt} className="dt-published">
           {prettyPublishedAt}
         </DateBubble>

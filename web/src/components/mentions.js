@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import styles from './mentions.module.scss'
+import * as styles from './mentions.module.scss'
 import { groupBy, orderBy } from 'lodash'
 import useFetch from './useFetch'
 

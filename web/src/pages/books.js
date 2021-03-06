@@ -4,7 +4,7 @@ import orderBy from 'lodash/orderBy'
 import parse from 'date-fns/parse'
 import format from 'date-fns/format'
 import Layout from '../components/layout'
-import styles from '../styles/books.module.scss'
+import * as styles from '../styles/books.module.scss'
 import SEO from '../components/seo'
 
 const ReadingList = ({ data }) => {

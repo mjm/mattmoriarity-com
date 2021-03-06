@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { FaGithub, FaLink, FaTools } from 'react-icons/fa'
-import styles from '../styles/project.module.scss'
+import * as styles from '../styles/project.module.scss'
 import PortableText from '../components/portableText'
 import Layout from '../components/layout'
 import GraphQLErrorList from '../components/graphql-error-list'

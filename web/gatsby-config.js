@@ -28,12 +28,7 @@ module.exports = {
       }
     },
     'gatsby-plugin-feeds',
-    {
-      resolve: 'gatsby-plugin-sass',
-      options: {
-        implementation: require('sass')
-      }
-    },
+    'gatsby-plugin-sass',
     {
       resolve: 'gatsby-plugin-typography',
       options: {

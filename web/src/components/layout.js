@@ -4,7 +4,7 @@ import Header from './header'
 import Navbar from './navbar'
 import useSiteMetadata from './site-metadata'
 
-import styles from './layout.module.scss'
+import * as styles from './layout.module.scss'
 
 const Layout = ({ children }) => {
   const {
