@@ -58,6 +58,6 @@
     "jsdom": "^16.2.1",
     "prettier": "2.0.2",
     "prettier-config-standard": "^1.0.1",
-    "prettier-eslint-cli": "^4.7.1"
+    "prettier-eslint-cli": "^7.1.0"
   }
 }
